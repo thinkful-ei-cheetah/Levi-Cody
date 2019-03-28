@@ -17,24 +17,31 @@ function newItem() {
         </div>
       </li>`
       );
+      $(newItem).val('');
     })
 }
 //toggle item status
 
 function toggleButt() {
     $('.shopping-list').on('click', '.shopping-item-toggle', function(event) {
-        const itemName = $(event.currentTarget).closest('.shopping-item').val();
-        console.log(itemName);
-        // console.log(this);
-        $(itemName).addClass('shopping-item__checked');
+        const buttLi = $(event.currentTarget).closest('li');
+        const liSpan = $(buttLi).find('.shopping-item');
+        $(liSpan).toggleClass('shopping-item__checked');
     })
 }
 
 //delete item
+
+function deleteButt() {
+    $('.shopping-list').on('click', '.shopping-item-delete', function(event) {
+        $(event.currentTarget).closest('li').remove();
+    })
+}
 
 // $('.shopping-item').addClass('shopping-item__checked')
 
 $(function() {
     newItem();
     toggleButt();
+    deleteButt();
 });
