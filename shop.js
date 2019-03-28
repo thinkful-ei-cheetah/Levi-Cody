@@ -24,3 +24,4 @@ function newItem() {
 
 
 $(newItem());
+console.log('hello world')
