@@ -4,9 +4,6 @@ function newItem() {
     $("#js-shopping-list-form").submit( function(event) {  
         event.preventDefault();
         let newItem = $(event.currentTarget).find('#shopping-list-entry');
-    //    if( typeof $('shopping-list-entry') === 'string'){
-    //        throw new Error('need this please')
-    //    }
       $("ul").append(
         `<li>
         <span class="shopping-item">${newItem.val()}</span>
@@ -24,8 +21,20 @@ function newItem() {
 }
 //toggle item status
 
+function toggleButt() {
+    $('.shopping-list').on('click', '.shopping-item-toggle', function(event) {
+        const itemName = $(event.currentTarget).closest('.shopping-item').val();
+        console.log(itemName);
+        // console.log(this);
+        $(itemName).addClass('shopping-item__checked');
+    })
+}
+
 //delete item
 
+// $('.shopping-item').addClass('shopping-item__checked')
 
-$(newItem());
-// console.log('hello world')
+$(function() {
+    newItem();
+    toggleButt();
+});
